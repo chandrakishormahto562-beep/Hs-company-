@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H S Company — Faridabad Home Cleaning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16324A;
+  --soap:#F7F6F1;
+  --teal:#1D8073;
+  --teal-dark:#0F5B51;
+  --marigold:#E8A33D;
+  --marigold-dark:#B87A1F;
+  --slate:#55636B;
+  --card:#FFFFFF;
+  --border:#E3E0D6;
+  --danger:#C4483C;
+  --radius:14px;
+  --shadow:0 2px 10px rgba(22,50,74,0.08);
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Hind',sans-serif;background:var(--soap);color:var(--ink);}
+h1,h2,h3,.brand{font-family:'Baloo 2',sans-serif;}
+button{font-family:inherit;}
+.hidden{display:none !important;}
+
+/* ---- Top bar ---- */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--ink);color:#fff;padding:14px 18px;
+}
+.hamburger{
+  background:none;border:none;color:#fff;font-size:24px;cursor:pointer;
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:8px;
+}
+.hamburger:hover{background:rgba(255,255,255,0.1);}
+.brand{font-size:20px;font-weight:700;letter-spacing:0.3px;}
+.brand span{color:var(--marigold);}
+.topbar-right{width:40px;}
+
+/* ---- Drawer menu ---- */
+.overlay{
+  position:fixed;inset:0;background:rgba(22,50,74,0.55);z-index:60;
+}
+.drawer{
+  position:fixed;top:0;left:0;bottom:0;width:280px;max-width:82vw;background:#fff;z-index:70;
+  box-shadow:4px 0 24px rgba(0,0,0,0.2);padding:20px;overflow-y:auto;
+}
+.drawer h3{margin:4px 0 14px;font-size:16px;color:var(--slate);}
+.drawer-item{
+  display:flex;align-items:center;gap:12px;padding:14px 12px;border-radius:10px;
+  cursor:pointer;margin-bottom:8px;border:1px solid var(--border);background:var(--soap);
+}
+.drawer-item:hover{border-color:var(--teal);}
+.drawer-item .ic{
+  width:38px;height:38px;border-radius:10px;background:var(--teal);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.drawer-item .txt b{display:block;font-size:15px;}
+.drawer-item .txt small{color:var(--slate);font-size:12px;}
+.drawer-close{float:right;background:none;border:none;font-size:20px;cursor:pointer;color:var(--slate);}
+
+/* ---- Screens / phone shell ---- */
+.wrap{max-width:900px;margin:0 auto;padding:22px 16px 60px;}
+.phone{
+  max-width:420px;margin:0 auto;background:#fff;border-radius:26px;border:8px solid var(--ink);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.phone-inner{padding:20px;min-height:520px;}
+.screen-title{font-size:19px;margin:0 0 4px;}
+.screen-sub{color:var(--slate);font-size:13px;margin:0 0 18px;}
+
+/* ---- Hero (marketing site) ---- */
+.hero{
+  background:linear-gradient(180deg,var(--ink) 0%,#1c3f5c 100%);color:#fff;
+  border-radius:20px;padding:38px 26px;margin-bottom:26px;
+}
+.hero h1{font-size:30px;margin:0 0 10px;line-height:1.25;}
+.hero p{color:#cfe0e6;font-size:15px;max-width:520px;margin:0 0 18px;}
+.badge-strip{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+.badge{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;
+  padding:6px 12px;border-radius:20px;font-size:12.5px;}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.btn{
+  border:none;border-radius:10px;padding:12px 20px;font-size:14.5px;font-weight:600;cursor:pointer;
+}
+.btn-primary{background:var(--marigold);color:#3a2405;}
+.btn-primary:hover{background:var(--marigold-dark);}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.6);color:#fff;}
+.btn-teal{background:var(--teal);color:#fff;}
+.btn-teal:hover{background:var(--teal-dark);}
+.btn-ghost{background:var(--soap);border:1px solid var(--border);color:var(--ink);}
+.btn-block{width:100%;}
+.btn-sm{padding:8px 14px;font-size:13px;}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin:18px 0 26px;}
+.svc-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;cursor:pointer;}
+.svc-card:hover{border-color:var(--teal);}
+.svc-card .ic{color:var(--teal);margin-bottom:8px;}
+.svc-card b{font-size:13.5px;display:block;}
+.svc-card small{color:var(--slate);font-size:11.5px;}
+
+/* ---- Form elements ---- */
+label{display:block;font-size:12.5px;color:var(--slate);margin:12px 0 5px;font-weight:600;}
+input[type=text],input[type=email],input[type=tel],input[type=number],select{
+  width:100%;padding:11px 12px;border:1px solid var(--border);border-radius:10px;font-size:14.5px;
+  background:#fbfaf7;color:var(--ink);
+}
+input:disabled,select:disabled{color:var(--slate);background:#f0efe9;}
+.otp-row{display:flex;gap:8px;margin-top:8px;}
+.otp-row input{text-align:center;font-size:20px;padding:10px 0;}
+.field-note{font-size:11.5px;color:var(--slate);margin-top:4px;}
+.error-box{background:#fbeae7;border:1px solid var(--danger);color:var(--danger);
+  padding:10px 12px;border-radius:10px;font-size:13px;margin-top:10px;}
+.ok-box{background:#e6f3ee;border:1px solid var(--teal);color:var(--teal-dark);
+  padding:10px 12px;border-radius:10px;font-size:13px;margin-top:10px;}
+.otp-info{background:#fff6e6;border:1px dashed var(--marigold-dark);color:#7a4e0c;
+  padding:8px 12px;border-radius:10px;font-size:12.5px;margin-top:10px;}
+
+/* ---- Service selector rows ---- */
+.item-row{
+  display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);
+}
+.item-row .ic{width:38px;height:38px;flex-shrink:0;color:var(--teal);}
+.item-row .meta{flex:1;}
+.item-row .meta b{font-size:14px;display:block;}
+.item-row .meta small{color:var(--slate);font-size:11.5px;}
+.qty-ctrl{display:flex;align-items:center;gap:8px;}
+.qty-ctrl button{
+  width:28px;height:28px;border-radius:50%;border:1px solid var(--teal);background:#fff;color:var(--teal);
+  font-size:15px;cursor:pointer;line-height:1;
+}
+.qty-ctrl span{min-width:16px;text-align:center;font-weight:600;font-size:14px;}
+.sqft-input{width:66px;padding:7px 6px;border:1px solid var(--border);border-radius:8px;font-size:13px;}
+.toggle-pair{display:flex;gap:8px;}
+.toggle-pair button{
+  flex:1;padding:7px 4px;border-radius:8px;border:1px solid var(--border);background:#fff;
+  font-size:11.5px;cursor:pointer;color:var(--slate);
+}
+.toggle-pair button.active{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:600;}
+
+/* ---- Receipt (signature element) ---- */
+.receipt{
+  background:#fffdf7;border:1px solid var(--border);border-radius:10px;padding:16px 16px 10px;
+  margin-top:18px;position:relative;
+  background-image:
+    radial-gradient(circle at 0 100%, transparent 8px, #fffdf7 8.5px),
+    radial-gradient(circle at 100% 100%, transparent 8px, #fffdf7 8.5px);
+}
+.receipt::before{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:0;
+  border-top:2px dashed #d8d3c4;
+}
+.receipt h3{margin:0 0 10px;font-size:14px;display:flex;align-items:center;gap:8px;}
+.receipt .rline{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;color:var(--slate);}
+.receipt .rline b{color:var(--ink);font-weight:600;}
+.receipt .rtotal{
+  display:flex;justify-content:space-between;border-top:1px dashed #d8d3c4;margin-top:8px;padding-top:10px;
+  font-size:16px;font-weight:700;
+}
+.receipt .rtotal span:last-child{color:var(--teal-dark);}
+
+/* ---- Job / booking cards ---- */
+.job-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;}
+.job-card .row{display:flex;justify-content:space-between;font-size:13px;margin:4px 0;color:var(--slate);}
+.job-card .row b{color:var(--ink);}
+.status-pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+.status-pending{background:#fff3da;color:#8a5b00;}
+.status-assigned{background:#e2eefb;color:#175690;}
+.status-progress{background:#fdeccf;color:#8a5000;}
+.status-done{background:#e1f0e6;color:#1c6b3a;}
+
+.stars{display:flex;gap:6px;font-size:26px;margin:10px 0;}
+.stars span{cursor:pointer;color:#d8d3c4;}
+.stars span.active{color:var(--marigold);}
+
+.tabbar{display:flex;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.tabbar button{flex:1;background:none;border:none;padding:10px 4px;font-size:13px;color:var(--slate);
+  border-bottom:2px solid transparent;cursor:pointer;}
+.tabbar button.active{color:var(--teal-dark);border-color:var(--teal);font-weight:700;}
+
+table.admin-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+table.admin-tbl th{text-align:left;color:var(--slate);font-weight:600;padding:8px 6px;border-bottom:1px solid var(--border);font-size:11.5px;}
+table.admin-tbl td{padding:9px 6px;border-bottom:1px solid var(--border);}
+
+.link-btn{background:none;border:none;color:var(--teal-dark);font-weight:600;font-size:13px;cursor:pointer;padding:0;}
+.small-note{font-size:11.5px;color:var(--slate);margin-top:14px;line-height:1.5;}
+.section-gap{margin-top:26px;}
+footer{text-align:center;color:var(--slate);font-size:12px;padding:30px 0 10px;}
+
+/* ---- Bottom nav ---- */
+body{padding-bottom:64px;}
+.bottom-nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;
+  background:#fff;border-top:1px solid var(--border);
+  display:flex;box-shadow:0 -2px 10px rgba(22,50,74,0.06);
+}
+.bottom-nav button{
+  flex:1;background:none;border:none;cursor:pointer;padding:9px 4px 8px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--slate);font-size:11.5px;
+}
+.bottom-nav button.active{color:var(--teal-dark);font-weight:600;}
+.bottom-nav svg{width:21px;height:21px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="hamburger" id="menuBtn" aria-label="menu">&#9776;</button>
+  <div class="brand" onclick="showScreen('home')" style="cursor:pointer">H<span>S</span> Company</div>
+  <div class="topbar-right"></div>
+</div>
+
+<div class="overlay hidden" id="overlay"></div>
+<div class="drawer hidden" id="drawer">
+  <button class="drawer-close" id="drawerClose">&times;</button>
+  <h3>मेन्यू</h3>
+  <div class="drawer-item" onclick="goRole('home')">
+    <div class="ic">&#8962;</div>
+    <div class="txt"><b>वेबसाइट होम</b><small>H S Company के बारे में</small></div>
+  </div>
+  <div class="drawer-item" onclick="goRole('customer')">
+    <div class="ic">1</div>
+    <div class="txt"><b>Customer App</b><small>Booking करने के लिए</small></div>
+  </div>
+  <div class="drawer-item" onclick="goRole('partner')">
+    <div class="ic">2</div>
+    <div class="txt"><b>Partner App</b><small>Service partner लॉगिन</small></div>
+  </div>
+  <div class="drawer-item" onclick="goRole('admin')">
+    <div class="ic">3</div>
+    <div class="txt"><b>Admin Panel</b><small>H S Company टीम के लिए</small></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============ HOME ============ -->
+<div id="scr-home">
+  <div class="hero">
+    <div class="badge-strip">
+      <span class="badge">सिर्फ फरीदाबाद, हरियाणा</span>
+      <span class="badge">Sofa · Carpet · Bed · Kitchen</span>
+    </div>
+    <h1>घर की सफ़ाई, अब एक टैप में बुक करें</h1>
+    <p>H S Company फरीदाबाद के घरों में सोफा, कारपेट, बेड, डाइनिंग और किचन की गहरी सफ़ाई करती है। भरोसेमंद पार्टनर, साफ़ प्राइसिंग।</p>
+  </div>
+
+  <h2>हमारी सर्विसेज़</h2>
+  <p class="screen-sub" style="margin-top:-10px">किसी भी सर्विस पर क्लिक करके मात्रा (quantity) चुनें</p>
+  <div class="services-grid" id="homeServiceGrid"></div>
+
+  <div class="job-card" style="border-left:4px solid var(--teal)">
+    <b style="font-size:14px">सिर्फ फरीदाबाद में सर्विस</b>
+    <p class="row" style="margin-top:6px">अभी हम केवल <b>फरीदाबाद, हरियाणा</b> के पिनकोड पर बुकिंग लेते हैं। बाकी शहरों से बुकिंग की कोशिश करने पर सिस्टम अपने आप मना कर देगा।</p>
+  </div>
+
+  <h2 class="section-gap">मदद चाहिए?</h2>
+  <div id="helpCard"></div>
+
+  <footer>H S Company &middot; Faridabad, Haryana &middot; यह एक वर्किंग प्रोटोटाइप है</footer>
+</div>
+
+<!-- ============ CUSTOMER FLOW ============ -->
+<div id="scr-customer" class="hidden">
+<div class="phone"><div class="phone-inner" id="custPane"></div></div>
+</div>
+
+<!-- ============ PARTNER FLOW ============ -->
+<div id="scr-partner" class="hidden">
+<div class="phone"><div class="phone-inner" id="partnerPane"></div></div>
+</div>
+
+<!-- ============ ADMIN FLOW ============ -->
+<div id="scr-admin" class="hidden">
+<div class="wrap" style="padding:0" id="adminPane"></div>
+</div>
+
+</div>
+
+<div class="bottom-nav">
+  <button id="navHomeBtn" class="active" onclick="bottomNavGo('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+    होम
+  </button>
+  <button id="navBookingBtn" onclick="bottomNavGo('booking')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M4 10h16M9 14h6M9 17h4"/></svg>
+    मेरी बुकिंग
+  </button>
+</div>
+
+<script>
+/* ===================== CONFIG / DATA ===================== */
+const PRICES = {
+  sofaSeat: 300, carpetSqft: 15, singleBed: 500, doubleBed: 800,
+  diningChair: 100, bathroom: 400, diningTable: 300,
+  fridgeSingle: 350, fridgeDouble: 550, microwave: 250
+};
+const VALID_PINCODES_NOTE = "121001 से 121010 (फरीदाबाद)";
+function isFaridabadPin(pin){
+  pin = (pin||"").trim();
+  if(!/^\d{6}$/.test(pin)) return false;
+  const n = parseInt(pin,10);
+  return n>=121001 && n<=121010;
+}
+
+const SERVICES = [
+  {key:'sofa', name:'सोफा क्लीनिंग', unit:'सीट', icon:iconSofa()},
+  {key:'carpet', name:'कारपेट क्लीनिंग', unit:'sq.ft', icon:iconCarpet()},
+  {key:'bed', name:'बेड क्लीनिंग', unit:'बेड', icon:iconBed()},
+  {key:'chair', name:'डाइनिंग चेयर', unit:'चेयर', icon:iconChair()},
+  {key:'bathroom', name:'बाथरूम क्लीनिंग', unit:'बाथरूम', icon:iconBath()},
+  {key:'table', name:'डाइनिंग टेबल', unit:'टेबल', icon:iconTable()},
+  {key:'fridge', name:'फ्रिज क्लीनिंग', unit:'फ्रिज', icon:iconFridge()},
+  {key:'microwave', name:'माइक्रोवेव क्लीनिंग', unit:'यूनिट', icon:iconMicro()},
+];
+
+function iconWrap(path){return '<svg class="ic" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+path+'</svg>';}
+function iconSofa(){return iconWrap('<path d="M4 12v5a1 1 0 0 0 1 1h1v2M18 18v2M4 12V9a2 2 0 0 1 2-2h1M4 12h16M20 12V9a2 2 0 0 0-2-2h-1M20 12v5a1 1 0 0 1-1 1h-1v2M7 7V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2"/>');}
+function iconCarpet(){return iconWrap('<rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18M3 14h18M9 6v12M15 6v12"/>');}
+function iconBed(){return iconWrap('<path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18v2M21 18v2M3 12V9a2 2 0 0 1 2-2h4v5"/>');}
+function iconChair(){return iconWrap('<path d="M6 10V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v5M5 10h14v5H5z"/><path d="M6 15v6M18 15v6"/>');}
+function iconBath(){return iconWrap('<path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2Z"/><path d="M7 12V6a2 2 0 0 1 3-1.7M5 19l-1 2M19 19l1 2"/>');}
+function iconTable(){return iconWrap('<path d="M3 8h18M5 8v10M19 8v10M3 13h18"/>');}
+function iconFridge(){return iconWrap('<rect x="6" y="2" width="12" height="20" rx="1.5"/><path d="M6 10h12M9 5v3M9 14v3"/>');}
+function iconMicro(){return iconWrap('<rect x="3" y="6" width="18" height="12" rx="1.5"/><rect x="6" y="9" width="9" height="6" rx="1"/><path d="M17 10h1M17 13h1"/>');}
+
+/* ===================== STATE (in-memory store) ===================== */
+let partners = [
+  {id:'P1', mobile:'9811100000', aadhar:'XXXX-XXXX-1234', pan:'ABCDE1234F', email:'partner1@hscompany.in', name:'Partner (Faridabad)'}
+];
+let bookings = [];
+let bookingSeq = 1000;
+let customServices = []; // admin-added extra services: {id,name,unit,price,max,photo}
+let SERVICE_PHOTOS = {}; // key -> photo URL for base services
+const PRICE_LABELS = {
+  sofaSeat:'सोफा (प्रति सीट)', carpetSqft:'कारपेट (प्रति sq.ft)', singleBed:'सिंगल बेड',
+  doubleBed:'डबल बेड', diningChair:'डाइनिंग चेयर', bathroom:'बाथरूम', diningTable:'डाइनिंग टेबल',
+  fridgeSingle:'फ्रिज (Single Door)', fridgeDouble:'फ्रिज (Double Door)', microwave:'माइक्रोवेव'
+};
+const SERVICE_PHOTO_LABELS = {
+  sofa:'सोफा क्लीनिंग', carpetSqft:'कारपेट क्लीनिंग', doubleBed:'डबल बेड', singleBed:'सिंगल बेड',
+  chair:'डाइनिंग चेयर', table:'डाइनिंग टेबल', bathroom:'बाथरूम क्लीनिंग', fridge:'फ्रिज क्लीनिंग', microwave:'माइक्रोवेव क्लीनिंग'
+};
+function photoOrIcon(url, icon, style){
+  return url ? `<img src="${url}" alt="" style="${style}" onerror="this.style.display='none'">` : icon;
+}
+
+let cust = {name:'',mobile:'',email:'',address:'',pincode:'',otp:null,loggedIn:false};
+let partnerSession = {mobile:'',otp:null,loggedIn:false,partner:null};
+let adminLoggedIn = false;
+const ADMIN_USERNAME = 'chandrakishormahto562';
+const ADMIN_PASSWORD = '6239348637Chandrakishor';
+
+function freshCart(){
+  return {sofa:0, carpetSqft:0, singleBed:0, doubleBed:0, chair:0,
+    bathroom:0, table:0, fridgeType:'single', fridgeQty:0, microwave:0, custom:{}};
+}
+let cart = freshCart();
+let activeBooking = null;
+
+/* ===================== NAV ===================== */
+function showScreen(id){
+  ['home','customer','partner','admin'].forEach(s=>{
+    document.getElementById('scr-'+s).classList.toggle('hidden', s!==id);
+  });
+  closeDrawer();
+  window.scrollTo(0,0);
+}
+function goRole(role){
+  if(role==='home'){ showScreen('home'); syncBottomNav('home'); return; }
+  if(role==='customer'){ showScreen('customer'); renderCustomer('services'); syncBottomNav('other'); }
+  if(role==='partner'){ showScreen('partner'); renderPartner(partnerSession.loggedIn?'dash':'login'); syncBottomNav('other'); }
+  if(role==='admin'){ showScreen('admin'); renderAdmin(adminLoggedIn?'dash':'login'); syncBottomNav('other'); }
+}
+function goSelectProducts(){
+  showScreen('customer');
+  renderCustomer('services');
+  syncBottomNav('other');
+}
+function syncBottomNav(which){
+  document.getElementById('navHomeBtn').classList.toggle('active', which==='home');
+  document.getElementById('navBookingBtn').classList.toggle('active', which==='booking');
+}
+function bottomNavGo(target){
+  if(target==='home'){ goRole('home'); }
+  else if(target==='booking'){ goMyBooking(); }
+}
+let loginIntent = null; // 'booking' | 'track' | null
+function goMyBooking(){
+  showScreen('customer');
+  closeDrawer();
+  if(cust.loggedIn){ renderCustomer('track'); }
+  else { loginIntent='track'; renderCustomer('login'); }
+  syncBottomNav('booking');
+}
+document.getElementById('menuBtn').onclick = ()=>{
+  document.getElementById('overlay').classList.remove('hidden');
+  document.getElementById('drawer').classList.remove('hidden');
+};
+document.getElementById('drawerClose').onclick = closeDrawer;
+document.getElementById('overlay').onclick = closeDrawer;
+function closeDrawer(){
+  document.getElementById('overlay').classList.add('hidden');
+  document.getElementById('drawer').classList.add('hidden');
+}
+
+let SUPPORT_INFO = {phone:'', whatsapp:'', email:''};
+
+function renderHomeGrid(){
+  const g = document.getElementById('homeServiceGrid');
+  const cardStyle = 'width:44px;height:44px;object-fit:cover;border-radius:10px;display:block;margin:0 auto 8px';
+  const homeKeyMap = {sofa:'sofa',carpet:'carpetSqft',bed:'doubleBed',chair:'chair',bathroom:'bathroom',table:'table',fridge:'fridge',microwave:'microwave'};
+  const baseCards = SERVICES.map(s=>{
+    const media = photoOrIcon(SERVICE_PHOTOS[homeKeyMap[s.key]], s.icon, cardStyle);
+    return `<div class="svc-card" onclick="goSelectProducts()">${media}<b>${s.name}</b><small>${s.unit} अनुसार price</small></div>`;
+  });
+  const extraCards = customServices.map(it=>{
+    const media = photoOrIcon(it.photo, iconWrap('<circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/>'), cardStyle);
+    return `<div class="svc-card" onclick="goSelectProducts()">${media}<b>${it.name}</b><small>${it.unit} अनुसार price</small></div>`;
+  });
+  g.innerHTML = baseCards.concat(extraCards).join('');
+}
+function renderHelpCard(){
+  const box = document.getElementById('helpCard');
+  if(!box) return;
+  const contactLines = [];
+  if(SUPPORT_INFO.phone) contactLines.push(`<a href="tel:${SUPPORT_INFO.phone}" class="btn btn-teal btn-sm">कॉल करें: ${SUPPORT_INFO.phone}</a>`);
+  if(SUPPORT_INFO.whatsapp) contactLines.push(`<a href="https://wa.me/${SUPPORT_INFO.whatsapp}" target="_blank" class="btn btn-ghost btn-sm">WhatsApp पर लिखें</a>`);
+  if(SUPPORT_INFO.email) contactLines.push(`<a href="mailto:${SUPPORT_INFO.email}" class="btn btn-ghost btn-sm">ईमेल करें</a>`);
+  box.innerHTML = `
+    <div class="job-card">
+      ${contactLines.length ? `<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">${contactLines.join('')}</div>` : '<p class="small-note" style="margin-top:0">सहायता के लिए संपर्क जानकारी जल्द जोड़ी जाएगी।</p>'}
+      <details style="margin-bottom:10px"><summary style="cursor:pointer;font-weight:600;font-size:13.5px">आप किन इलाकों में सर्विस देते हैं?</summary><p class="small-note">अभी सिर्फ फरीदाबाद, हरियाणा में — बाकी शहरों से बुकिंग नहीं ली जाती।</p></details>
+      <details style="margin-bottom:10px"><summary style="cursor:pointer;font-weight:600;font-size:13.5px">बुकिंग कैसे कन्फर्म होती है?</summary><p class="small-note">प्रोडक्ट और मात्रा चुनने के बाद, बुकिंग कन्फर्म करते समय मोबाइल नंबर पर OTP आता है — वेरीफाई करते ही बुकिंग कन्फर्म हो जाती है।</p></details>
+      <details style="margin-bottom:10px"><summary style="cursor:pointer;font-weight:600;font-size:13.5px">काम शुरू करने का OTP कहां मिलेगा?</summary><p class="small-note">बुकिंग कन्फर्म होते ही आपको स्क्रीन पर एक 6 अंकों का OTP मिलेगा। पार्टनर के घर आने पर वही OTP उसे बताना है, तभी काम शुरू होगा।</p></details>
+      <details><summary style="cursor:pointer;font-weight:600;font-size:13.5px">पार्टनर की पहचान वेरीफाई है क्या?</summary><p class="small-note">हर पार्टनर को जोड़ने से पहले Admin उसका मोबाइल नंबर, आधार कार्ड और PAN कार्ड चेक करता है।</p></details>
+    </div>
+  `;
+}
+renderHomeGrid();
+renderHelpCard();
+
+/* ===================== CUSTOMER APP ===================== */
+function genOtp(len){
+  let s=''; for(let i=0;i<len;i++) s+=Math.floor(Math.random()*10);
+  return s;
+}
+
+function renderCustomer(step){
+  const p = document.getElementById('custPane');
+  if(step==='login'){
+    p.innerHTML = `
+      <h2 class="screen-title">Login करें</h2>
+      <p class="screen-sub">बुकिंग कन्फर्म करने के लिए अपनी जानकारी भरें</p>
+      <label>पूरा नाम</label>
+      <input type="text" id="cName" placeholder="जैसे: राहुल शर्मा">
+      <label>मोबाइल नंबर</label>
+      <input type="tel" id="cMobile" maxlength="10" placeholder="10 अंकों का मोबाइल नंबर">
+      <label>ईमेल आईडी</label>
+      <input type="email" id="cEmail" placeholder="you@example.com">
+      <label>पता (मकान नंबर, गली, कॉलोनी)</label>
+      <input type="text" id="cAddress" placeholder="जैसे: H.No 123, Sector 15">
+      <label>शहर</label>
+      <input type="text" value="फरीदाबाद" disabled>
+      <label>राज्य</label>
+      <input type="text" value="हरियाणा" disabled>
+      <label>पिनकोड</label>
+      <input type="text" id="cPin" maxlength="6" placeholder="जैसे: 121002">
+      <div class="field-note">हम अभी सिर्फ फरीदाबाद (पिनकोड ${VALID_PINCODES_NOTE}) में सर्विस देते हैं</div>
+      <div id="cLoginErr"></div>
+      <button class="btn btn-teal btn-block" style="margin-top:16px" onclick="custSendOtp()">OTP भेजें और लॉगिन करें</button>
+      <button class="link-btn" style="margin-top:12px;display:block;text-align:center;width:100%" onclick="renderCustomer('services')">← सर्विस लिस्ट पर वापस जाएं</button>
+    `;
+  } else if(step==='otp'){
+    p.innerHTML = `
+      <h2 class="screen-title">OTP डालें</h2>
+      <p class="screen-sub">${cust.mobile} पर भेजा गया 4 अंकों का OTP डालें</p>
+      <div class="otp-row">
+        <input type="text" id="cOtp" maxlength="4" placeholder="XXXX" style="font-size:22px;letter-spacing:6px">
+      </div>
+      <div class="otp-info">आपका OTP: <b>${cust.otp}</b></div>
+      <div id="cOtpErr"></div>
+      <button class="btn btn-teal btn-block" style="margin-top:16px" onclick="custVerifyOtp()">वेरिफाई करें</button>
+      <button class="link-btn" style="margin-top:12px" onclick="renderCustomer('login')">वापस जाएं</button>
+    `;
+  } else if(step==='services'){
+    renderCustServices();
+  } else if(step==='confirm'){
+    renderCustConfirm();
+  } else if(step==='track'){
+    renderCustTrack();
+  }
+}
+
+function custSendOtp(){
+  const name = document.getElementById('cName').value.trim();
+  const mobile = document.getElementById('cMobile').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  const address = document.getElementById('cAddress').value.trim();
+  const pin = document.getElementById('cPin').value.trim();
+  const errBox = document.getElementById('cLoginErr');
+  if(!name||!mobile||!email||!address||!pin){
+    errBox.innerHTML = '<div class="error-box">कृपया सभी फ़ील्ड भरें</div>'; return;
+  }
+  if(!/^\d{10}$/.test(mobile)){
+    errBox.innerHTML = '<div class="error-box">कृपया सही 10 अंकों का मोबाइल नंबर डालें</div>'; return;
+  }
+  if(!isFaridabadPin(pin)){
+    errBox.innerHTML = '<div class="error-box">माफ़ कीजिए, अभी हम सिर्फ फरीदाबाद (हरियाणा) में सर्विस देते हैं। यह पिनकोड फरीदाबाद का नहीं लग रहा — बुकिंग नहीं हो सकती।</div>';
+    return;
+  }
+  cust = {name,mobile,email,address,pincode:pin,otp:genOtp(4),loggedIn:false};
+  renderCustomer('otp');
+}
+function custVerifyOtp(){
+  const val = document.getElementById('cOtp').value.trim();
+  if(val!==cust.otp){
+    document.getElementById('cOtpErr').innerHTML = '<div class="error-box">गलत OTP, दोबारा कोशिश करें</div>'; return;
+  }
+  cust.loggedIn = true;
+  if(loginIntent==='booking'){ loginIntent=null; finalizeBooking(); }
+  else if(loginIntent==='track'){ loginIntent=null; renderCustomer('track'); }
+  else { renderCustomer('services'); }
+}
+
+function priceOf(){
+  let total=0;
+  total += cart.sofa*PRICES.sofaSeat;
+  total += cart.carpetSqft*PRICES.carpetSqft;
+  total += cart.singleBed*PRICES.singleBed;
+  total += cart.doubleBed*PRICES.doubleBed;
+  total += cart.chair*PRICES.diningChair;
+  total += cart.bathroom*PRICES.bathroom;
+  total += cart.table*PRICES.diningTable;
+  total += cart.fridgeQty*(cart.fridgeType==='double'?PRICES.fridgeDouble:PRICES.fridgeSingle);
+  total += cart.microwave*PRICES.microwave;
+  customServices.forEach(it=>{ total += (cart.custom[it.id]||0)*it.price; });
+  return total;
+}
+function customQtyRow(item){
+  return `<div class="item-row">
+    ${photoOrIcon(item.photo, iconWrap('<circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/>'), 'width:38px;height:38px;object-fit:cover;border-radius:8px;flex-shrink:0')}
+    <div class="meta"><b>${item.name}</b><small>₹${item.price} प्रति ${item.unit}</small></div>
+    <div class="qty-ctrl">
+      <button onclick="changeCustomQty('${item.id}',-1,${item.max})">-</button>
+      <span id="qty_custom_${item.id}">${cart.custom[item.id]||0}</span>
+      <button onclick="changeCustomQty('${item.id}',1,${item.max})">+</button>
+    </div>
+  </div>`;
+}
+function changeCustomQty(id,delta,max){
+  let v = (cart.custom[id]||0) + delta;
+  if(v<0) v=0; if(v>max) v=max;
+  cart.custom[id]=v;
+  document.getElementById('qty_custom_'+id).innerText=v;
+  updateReceipt();
+}
+
+function qtyRow(label,unit,key,max,icon,extra){
+  return `<div class="item-row">
+    ${photoOrIcon(SERVICE_PHOTOS[key], icon, 'width:38px;height:38px;object-fit:cover;border-radius:8px;flex-shrink:0')}
+    <div class="meta"><b>${label}</b><small>${extra||('₹ प्रति '+unit)}</small></div>
+    <div class="qty-ctrl">
+      <button onclick="changeQty('${key}',-1,${max})">-</button>
+      <span id="qty_${key}">${cart[key]}</span>
+      <button onclick="changeQty('${key}',1,${max})">+</button>
+    </div>
+  </div>`;
+}
+function changeQty(key,delta,max){
+  let v = cart[key] + delta;
+  if(v<0) v=0; if(v>max) v=max;
+  cart[key]=v;
+  document.getElementById('qty_'+key).innerText=v;
+  updateReceipt();
+}
+function changeFridgeType(t){
+  cart.fridgeType=t;
+  document.getElementById('fridgeSingleBtn').classList.toggle('active',t==='single');
+  document.getElementById('fridgeDoubleBtn').classList.toggle('active',t==='double');
+  updateReceipt();
+}
+function updateSqft(val){
+  let v = parseInt(val||'0',10); if(isNaN(v)||v<0) v=0;
+  cart.carpetSqft=v; updateReceipt();
+}
+
+function renderCustServices(){
+  const p = document.getElementById('custPane');
+  p.innerHTML = `
+    <h2 class="screen-title">${cust.loggedIn ? 'नमस्ते, '+cust.name.split(' ')[0] : 'सर्विस चुनें'}</h2>
+    <p class="screen-sub">जो सामान साफ़ करवाना है उसकी मात्रा चुनें — बुकिंग कन्फर्म करते समय लॉगिन करना होगा</p>
+
+    ${qtyRow('सोफा क्लीनिंग','सीट','sofa',10,iconSofa(),'₹'+PRICES.sofaSeat+' प्रति सीट (1-10 सीट)')}
+
+    <div class="item-row">
+      ${photoOrIcon(SERVICE_PHOTOS['carpetSqft'], iconCarpet(), 'width:38px;height:38px;object-fit:cover;border-radius:8px;flex-shrink:0')}
+      <div class="meta"><b>कारपेट क्लीनिंग</b><small>₹${PRICES.carpetSqft} प्रति sq.ft</small></div>
+      <input class="sqft-input" type="number" min="0" placeholder="sq.ft" value="${cart.carpetSqft||''}" oninput="updateSqft(this.value)">
+    </div>
+
+    ${qtyRow('डबल बेड','बेड','doubleBed',10,iconBed(),'₹'+PRICES.doubleBed+' प्रति बेड')}
+    ${qtyRow('सिंगल बेड','बेड','singleBed',10,iconBed(),'₹'+PRICES.singleBed+' प्रति बेड')}
+    ${qtyRow('डाइनिंग चेयर','चेयर','chair',12,iconChair(),'₹'+PRICES.diningChair+' प्रति चेयर')}
+    ${qtyRow('डाइनिंग टेबल','टेबल','table',5,iconTable(),'₹'+PRICES.diningTable+' प्रति टेबल (1-5)')}
+    ${qtyRow('बाथरूम क्लीनिंग','बाथरूम','bathroom',5,iconBath(),'₹'+PRICES.bathroom+' प्रति बाथरूम (1-5)')}
+
+    <div class="item-row" style="align-items:flex-start">
+      ${photoOrIcon(SERVICE_PHOTOS['fridge'], iconFridge(), 'width:38px;height:38px;object-fit:cover;border-radius:8px;flex-shrink:0')}
+      <div class="meta">
+        <b>फ्रिज क्लीनिंग</b>
+        <div class="toggle-pair" style="margin:6px 0">
+          <button id="fridgeSingleBtn" class="${cart.fridgeType==='single'?'active':''}" onclick="changeFridgeType('single')">Single Door ₹${PRICES.fridgeSingle}</button>
+          <button id="fridgeDoubleBtn" class="${cart.fridgeType==='double'?'active':''}" onclick="changeFridgeType('double')">Double Door ₹${PRICES.fridgeDouble}</button>
+        </div>
+      </div>
+      <div class="qty-ctrl">
+        <button onclick="changeQty('fridgeQty',-1,5)">-</button>
+        <span id="qty_fridgeQty">${cart.fridgeQty}</span>
+        <button onclick="changeQty('fridgeQty',1,5)">+</button>
+      </div>
+    </div>
+
+    ${qtyRow('माइक्रोवेव क्लीनिंग','यूनिट','microwave',5,iconMicro(),'₹'+PRICES.microwave+' प्रति यूनिट')}
+    ${customServices.map(it=>customQtyRow(it)).join('')}
+
+    <div class="receipt" id="receiptBox"></div>
+
+    <button class="btn btn-primary btn-block" style="margin-top:18px" onclick="custBook()">बुकिंग कन्फर्म करें</button>
+    ${cust.loggedIn ? `<button class="link-btn" style="margin-top:12px;display:block;text-align:center;width:100%" onclick="custLogout()">लॉगआउट</button>` : ''}
+  `;
+  updateReceipt();
+}
+function updateReceipt(){
+  const box = document.getElementById('receiptBox');
+  if(!box) return;
+  const lines=[];
+  if(cart.sofa) lines.push(['सोफा ('+cart.sofa+' सीट)', cart.sofa*PRICES.sofaSeat]);
+  if(cart.carpetSqft) lines.push(['कारपेट ('+cart.carpetSqft+' sq.ft)', cart.carpetSqft*PRICES.carpetSqft]);
+  if(cart.doubleBed) lines.push(['डबल बेड x'+cart.doubleBed, cart.doubleBed*PRICES.doubleBed]);
+  if(cart.singleBed) lines.push(['सिंगल बेड x'+cart.singleBed, cart.singleBed*PRICES.singleBed]);
+  if(cart.chair) lines.push(['डाइनिंग चेयर x'+cart.chair, cart.chair*PRICES.diningChair]);
+  if(cart.table) lines.push(['डाइनिंग टेबल x'+cart.table, cart.table*PRICES.diningTable]);
+  if(cart.bathroom) lines.push(['बाथरूम x'+cart.bathroom, cart.bathroom*PRICES.bathroom]);
+  if(cart.fridgeQty) lines.push(['फ्रिज ('+(cart.fridgeType==='double'?'Double':'Single')+') x'+cart.fridgeQty, cart.fridgeQty*(cart.fridgeType==='double'?PRICES.fridgeDouble:PRICES.fridgeSingle)]);
+  if(cart.microwave) lines.push(['माइक्रोवेव x'+cart.microwave, cart.microwave*PRICES.microwave]);
+  customServices.forEach(it=>{
+    const q = cart.custom[it.id]||0;
+    if(q) lines.push([it.name+' x'+q, q*it.price]);
+  });
+
+  box.innerHTML = `
+    <h3>बिल / रसीद — H S Company</h3>
+    ${lines.length ? lines.map(l=>`<div class="rline"><span>${l[0]}</span><b>₹${l[1]}</b></div>`).join('') : '<div class="rline">अभी कोई सर्विस नहीं चुनी गई</div>'}
+    <div class="rtotal"><span>कुल राशि</span><span>₹${priceOf()}</span></div>
+  `;
+}
+function custLogout(){
+  cust = {name:'',mobile:'',email:'',address:'',pincode:'',otp:null,loggedIn:false};
+  cart = freshCart();
+  renderCustomer('services');
+}
+
+function custBook(){
+  const total = priceOf();
+  if(total<=0){ alert('कृपया कम से कम एक सर्विस चुनें'); return; }
+  if(!cust.loggedIn){
+    loginIntent = 'booking';
+    renderCustomer('login');
+    return;
+  }
+  finalizeBooking();
+}
+function finalizeBooking(){
+  const total = priceOf();
+  const jobOtp = genOtp(6);
+  const booking = {
+    id: 'HS'+(bookingSeq++),
+    customerName: cust.name, customerMobile: cust.mobile, customerEmail: cust.email,
+    address: cust.address, pincode: cust.pincode,
+    cart: {...cart, custom:{...cart.custom}}, total, jobOtp,
+    status:'pending', partnerId:null,
+    rating:null, completedAt:null,
+    createdAt: new Date().toLocaleString('hi-IN')
+  };
+  bookings.push(booking);
+  activeBooking = booking;
+  cart = freshCart();
+  renderCustomer('confirm');
+}
+
+function renderCustConfirm(){
+  const b = activeBooking;
+  const p = document.getElementById('custPane');
+  p.innerHTML = `
+    <h2 class="screen-title">बुकिंग कन्फर्म हो गई ✔</h2>
+    <div class="ok-box">बुकिंग ID: <b>${b.id}</b> — Email (${b.customerEmail}) और मोबाइल (${b.customerMobile}) पर कन्फर्मेशन मैसेज भेज दिया गया है</div>
+    <div class="job-card" style="margin-top:14px">
+      <div class="row"><span>कुल राशि</span><b>₹${b.total}</b></div>
+      <div class="row"><span>पता</span><b>${b.address}, फरीदाबाद - ${b.pincode}</b></div>
+      <div class="row"><span>स्टेटस</span><span class="status-pill status-pending">पार्टनर असाइन होना बाकी</span></div>
+    </div>
+    <div class="otp-info">
+      पार्टनर के आने पर काम शुरू करने के लिए यह <b>6 अंकों का OTP</b> उसे बताएं:
+      <div style="font-size:22px;letter-spacing:4px;margin-top:6px;text-align:center;font-weight:700">${b.jobOtp}</div>
+    </div>
+    <p class="small-note">Admin जैसे ही किसी पार्टनर को यह बुकिंग असाइन करेगा, आपकी बुकिंग स्टेटस अपडेट हो जाएगी।</p>
+    <button class="btn btn-teal btn-block" style="margin-top:16px" onclick="renderCustomer('track')">बुकिंग ट्रैक करें</button>
+    <button class="link-btn" style="margin-top:12px;display:block;text-align:center;width:100%" onclick="renderCustomer('services')">एक और बुकिंग जोड़ें</button>
+  `;
+}
+
+function renderCustTrack(){
+  const p = document.getElementById('custPane');
+  const myBookings = bookings.filter(b=>b.customerMobile===cust.mobile).reverse();
+  p.innerHTML = `
+    <h2 class="screen-title">मेरी बुकिंग्स</h2>
+    <p class="screen-sub">${cust.mobile}</p>
+    <div id="trackList"></div>
+    <button class="link-btn" style="margin-top:10px" onclick="renderCustomer('services')">+ नई बुकिंग</button>
+  `;
+  const list = document.getElementById('trackList');
+  if(myBookings.length===0){ list.innerHTML='<p class="small-note">अभी कोई बुकिंग नहीं है</p>'; return; }
+  list.innerHTML = myBookings.map(b=>{
+    const statusMap = {pending:['status-pending','पार्टनर असाइन होना बाकी'],assigned:['status-assigned','पार्टनर असाइन हो गया'],progress:['status-progress','काम चालू है'],done:['status-done','काम पूरा हुआ']};
+    const st = statusMap[b.status];
+    const partner = partners.find(pt=>pt.id===b.partnerId);
+    let ratingHtml='';
+    if(b.status==='done'){
+      if(b.rating){
+        ratingHtml = `<div class="row" style="margin-top:6px"><span>आपकी रेटिंग</span><b>${'★'.repeat(b.rating)}${'☆'.repeat(5-b.rating)}</b></div>`;
+      } else {
+        ratingHtml = `<div class="section-gap" style="margin-top:10px">
+          <p class="small-note" style="margin-top:0">रिव्यू का विकल्प काम पूरा होने के 2 दिन बाद दिखेगा।</p>
+          <div class="stars" id="stars_${b.id}">
+            ${[1,2,3,4,5].map(n=>`<span onclick="setRating('${b.id}',${n})">★</span>`).join('')}
+          </div>
+        </div>`;
+      }
+    }
+    return `<div class="job-card">
+      <div class="row"><b>${b.id}</b><span class="status-pill ${st[0]}">${st[1]}</span></div>
+      <div class="row"><span>कुल राशि</span><b>₹${b.total}</b></div>
+      ${partner?`<div class="row"><span>पार्टनर</span><b>${partner.mobile}</b></div>`:''}
+      ${ratingHtml}
+    </div>`;
+  }).join('');
+}
+function setRating(bid,n){
+  const b = bookings.find(x=>x.id===bid);
+  b.rating = n;
+  renderCustTrack();
+}
+
+/* ===================== PARTNER APP ===================== */
+function renderPartner(step){
+  const p = document.getElementById('partnerPane');
+  if(step==='login'){
+    p.innerHTML = `
+      <h2 class="screen-title">Partner Login</h2>
+      <p class="screen-sub">केवल वे पार्टनर लॉगिन कर सकते हैं जिन्हें Admin ने जोड़ा है</p>
+      <label>मोबाइल नंबर</label>
+      <input type="tel" id="pMobile" maxlength="10" placeholder="10 अंकों का मोबाइल नंबर">
+      <div id="pLoginErr"></div>
+      <button class="btn btn-teal btn-block" style="margin-top:16px" onclick="partnerSendOtp()">OTP भेजें</button>
+    `;
+  } else if(step==='otp'){
+    p.innerHTML = `
+      <h2 class="screen-title">OTP डालें</h2>
+      <p class="screen-sub">${partnerSession.mobile} पर भेजा गया OTP डालें</p>
+      <div class="otp-row"><input type="text" id="pOtp" maxlength="4" style="font-size:22px;letter-spacing:6px" placeholder="XXXX"></div>
+      <div class="otp-info">आपका OTP: <b>${partnerSession.otp}</b></div>
+      <div id="pOtpErr"></div>
+      <button class="btn btn-teal btn-block" style="margin-top:16px" onclick="partnerVerifyOtp()">वेरिफाई करें</button>
+      <button class="link-btn" style="margin-top:12px" onclick="renderPartner('login')">वापस जाएं</button>
+    `;
+  } else if(step==='dash'){
+    renderPartnerDash();
+  } else if(step==='job'){
+    renderPartnerJob();
+  }
+}
+function partnerSendOtp(){
+  const mobile = document.getElementById('pMobile').value.trim();
+  const found = partners.find(pt=>pt.mobile===mobile);
+  const err = document.getElementById('pLoginErr');
+  if(!/^\d{10}$/.test(mobile)){ err.innerHTML='<div class="error-box">सही मोबाइल नंबर डालें</div>'; return; }
+  if(!found){ err.innerHTML='<div class="error-box">यह नंबर Admin के पास पार्टनर के रूप में रजिस्टर नहीं है</div>'; return; }
+  partnerSession = {mobile, otp:genOtp(4), loggedIn:false, partner:found};
+  renderPartner('otp');
+}
+function partnerVerifyOtp(){
+  const val = document.getElementById('pOtp').value.trim();
+  if(val!==partnerSession.otp){ document.getElementById('pOtpErr').innerHTML='<div class="error-box">गलत OTP</div>'; return; }
+  partnerSession.loggedIn = true;
+  renderPartner('dash');
+}
+function renderPartnerDash(){
+  const p = document.getElementById('partnerPane');
+  const my = bookings.filter(b=>b.partnerId===partnerSession.partner.id);
+  p.innerHTML = `
+    <h2 class="screen-title">मेरी जॉब्स</h2>
+    <p class="screen-sub">पार्टनर: ${partnerSession.mobile}</p>
+    <div id="pJobList"></div>
+    <button class="link-btn" style="margin-top:14px;display:block" onclick="partnerLogout()">लॉगआउट</button>
+  `;
+  const list = document.getElementById('pJobList');
+  if(my.length===0){ list.innerHTML='<p class="small-note">अभी कोई जॉब असाइन नहीं हुई। Admin जैसे ही असाइन करेगा यहां दिखेगी।</p>'; return; }
+  const statusMap = {assigned:['status-assigned','शुरू करें'],progress:['status-progress','चालू है'],done:['status-done','पूरा हुआ']};
+  list.innerHTML = my.map(b=>{
+    const st = statusMap[b.status] || ['status-pending',b.status];
+    return `<div class="job-card">
+      <div class="row"><b>${b.id}</b><span class="status-pill ${st[0]}">${st[1]}</span></div>
+      <div class="row"><span>ग्राहक का फोन</span><b>${b.customerMobile}</b></div>
+      <div class="row"><span>पता</span><b>${b.address}, फरीदाबाद - ${b.pincode}</b></div>
+      <div class="row"><span>राशि</span><b>₹${b.total}</b></div>
+      ${b.status!=='done' ? `<button class="btn btn-teal btn-sm" style="margin-top:10px" onclick="openPartnerJob('${b.id}')">जॉब खोलें</button>` : ''}
+    </div>`;
+  }).join('');
+}
+let openJobId=null;
+function openPartnerJob(id){ openJobId=id; renderPartner('job'); }
+function renderPartnerJob(){
+  const b = bookings.find(x=>x.id===openJobId);
+  const p = document.getElementById('partnerPane');
+  let actionHtml='';
+  if(b.status==='assigned'){
+    actionHtml = `
+      <label>ग्राहक से मिला OTP डालें (काम शुरू करने के लिए)</label>
+      <div class="otp-row"><input type="text" id="jobOtpInput" maxlength="6" style="font-size:20px;letter-spacing:5px" placeholder="6 अंकों का OTP"></div>
+      <div id="jobOtpErr"></div>
+      <button class="btn btn-primary btn-block" style="margin-top:14px" onclick="startJob('${b.id}')">काम शुरू करें</button>
+    `;
+  } else if(b.status==='progress'){
+    actionHtml = `<button class="btn btn-teal btn-block" style="margin-top:14px" onclick="completeJob('${b.id}')">काम पूरा हुआ — मार्क करें</button>`;
+  } else {
+    actionHtml = `<div class="ok-box">यह जॉब पूरी हो चुकी है</div>`;
+  }
+  p.innerHTML = `
+    <h2 class="screen-title">जॉब ${b.id}</h2>
+    <div class="job-card">
+      <div class="row"><span>ग्राहक का फोन</span><b>${b.customerMobile}</b></div>
+      <div class="row"><span>पता</span><b>${b.address}, फरीदाबाद - ${b.pincode}</b></div>
+      <div class="row"><span>राशि</span><b>₹${b.total}</b></div>
+    </div>
+    <p class="small-note">नोट: पार्टनर को ग्राहक का सिर्फ फोन नंबर और पता दिखता है — नाम/ईमेल जैसी बाकी जानकारी नहीं दी जाती।</p>
+    ${actionHtml}
+    <button class="link-btn" style="margin-top:12px;display:block" onclick="renderPartner('dash')">वापस जॉब लिस्ट पर</button>
+  `;
+}
+function startJob(id){
+  const b = bookings.find(x=>x.id===id);
+  const val = document.getElementById('jobOtpInput').value.trim();
+  if(val!==b.jobOtp){ document.getElementById('jobOtpErr').innerHTML='<div class="error-box">गलत OTP, ग्राहक से दोबारा पूछें</div>'; return; }
+  b.status='progress';
+  renderPartnerJob();
+}
+function completeJob(id){
+  const b = bookings.find(x=>x.id===id);
+  b.status='done';
+  b.completedAt = new Date().toLocaleString('hi-IN');
+  renderPartnerJob();
+}
+function partnerLogout(){
+  partnerSession = {mobile:'',otp:null,loggedIn:false,partner:null};
+  renderPartner('login');
+}
+
+/* ===================== ADMIN PANEL ===================== */
+function renderAdmin(step){
+  const p = document.getElementById('adminPane');
+  if(step==='login'){
+    p.innerHTML = `
+      <div class="phone" style="margin-top:10px"><div class="phone-inner">
+        <h2 class="screen-title">Admin Login</h2>
+        <p class="screen-sub">H S Company टीम के लिए</p>
+        <label>Admin Username</label>
+        <input type="text" id="aUser" placeholder="admin">
+        <label>Password</label>
+        <input type="text" id="aPass" placeholder="password">
+        <div id="aErr"></div>
+        <button class="btn btn-teal btn-block" style="margin-top:16px" onclick="adminLogin()">लॉगिन करें</button>
+      </div></div>
+    `;
+    return;
+  }
+  const partnerCount = partners.length;
+  const pendingCount = bookings.filter(b=>b.status==='pending').length;
+  p.innerHTML = `
+    <h2 class="screen-title" style="margin-top:10px">Admin Dashboard</h2>
+    <div class="tabbar">
+      <button class="tab-btn active" data-t="bookings" onclick="adminTab('bookings')">बुकिंग्स (${bookings.length})</button>
+      <button class="tab-btn" data-t="partners" onclick="adminTab('partners')">पार्टनर्स (${partnerCount})</button>
+      <button class="tab-btn" data-t="addpartner" onclick="adminTab('addpartner')">+ पार्टनर जोड़ें</button>
+      <button class="tab-btn" data-t="customise" onclick="adminTab('customise')">कस्टमाइज़ सर्विस</button>
+    </div>
+    <div id="adminTabBody"></div>
+    <button class="link-btn" style="margin-top:16px" onclick="adminLogout()">लॉगआउट</button>
+  `;
+  adminTab('bookings');
+  if(pendingCount>0){}
+}
+function adminLogin(){
+  const u = document.getElementById('aUser').value.trim();
+  const pw = document.getElementById('aPass').value.trim();
+  if(u===ADMIN_USERNAME && pw===ADMIN_PASSWORD){ adminLoggedIn=true; renderAdmin('dash'); }
+  else{ document.getElementById('aErr').innerHTML = '<div class="error-box">गलत यूज़रनेम या पासवर्ड</div>'; }
+}
+function adminLogout(){ adminLoggedIn=false; renderAdmin('login'); }
+
+function adminTab(t){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.t===t));
+  const body = document.getElementById('adminTabBody');
+  if(t==='bookings'){
+    body.innerHTML = `
+      <div style="overflow-x:auto">
+      <table class="admin-tbl">
+        <tr><th>ID</th><th>ग्राहक</th><th>पता</th><th>राशि</th><th>स्टेटस</th><th>पार्टनर असाइन करें</th></tr>
+        ${bookings.slice().reverse().map(b=>{
+          const statusMap = {pending:'पेंडिंग',assigned:'असाइन',progress:'चालू',done:'पूरा'};
+          return `<tr>
+            <td>${b.id}</td>
+            <td>${b.customerName}<br><small style="color:var(--slate)">${b.customerMobile}</small></td>
+            <td>${b.address}, ${b.pincode}</td>
+            <td>₹${b.total}</td>
+            <td>${statusMap[b.status]}</td>
+            <td>${b.status==='pending' ? `
+              <select id="assign_${b.id}" style="width:auto;padding:6px">
+                <option value="">चुनें</option>
+                ${partners.map(pt=>`<option value="${pt.id}">${pt.mobile}</option>`).join('')}
+              </select>
+              <button class="btn btn-sm btn-teal" style="margin-top:4px" onclick="assignPartner('${b.id}')">असाइन</button>
+            ` : (partners.find(pt=>pt.id===b.partnerId)?.mobile || '-')}</td>
+          </tr>`;
+        }).join('')}
+      </table>
+      </div>
+      ${bookings.length===0 ? '<p class="small-note">अभी कोई बुकिंग नहीं है</p>' : ''}
+    `;
+  } else if(t==='partners'){
+    body.innerHTML = `
+      <table class="admin-tbl">
+        <tr><th>Mobile</th><th>Name</th><th>Aadhar</th><th>PAN</th><th>Email</th></tr>
+        ${partners.map(pt=>`<tr><td>${pt.mobile}</td><td>${pt.name}</td><td>${pt.aadhar}</td><td>${pt.pan}</td><td>${pt.email}</td></tr>`).join('')}
+      </table>
+    `;
+  } else if(t==='addpartner'){
+    body.innerHTML = `
+      <label>पार्टनर का नाम</label>
+      <input type="text" id="npName" placeholder="जैसे: सुरेश कुमार">
+      <label>मोबाइल नंबर</label>
+      <input type="tel" id="npMobile" maxlength="10" placeholder="10 अंकों का मोबाइल नंबर">
+      <label>Aadhar Card नंबर</label>
+      <input type="text" id="npAadhar" placeholder="XXXX-XXXX-XXXX">
+      <label>PAN Card नंबर</label>
+      <input type="text" id="npPan" placeholder="ABCDE1234F">
+      <label>ईमेल आईडी</label>
+      <input type="email" id="npEmail" placeholder="partner@example.com">
+      <div id="npErr"></div>
+      <button class="btn btn-primary btn-block" style="margin-top:14px" onclick="addPartner()">पार्टनर जोड़ें</button>
+      <p class="small-note">पार्टनर जुड़ते ही वह अपने मोबाइल नंबर और OTP से Partner App में लॉगिन कर सकेगा।</p>
+    `;
+  } else if(t==='customise'){
+    body.innerHTML = `
+      <h3 style="font-size:14px;margin:14px 0 8px">मौजूदा सर्विस के प्राइस बदलें</h3>
+      <table class="admin-tbl">
+        <tr><th>सर्विस</th><th>प्राइस (₹)</th></tr>
+        ${basePriceRows()}
+      </table>
+      <button class="btn btn-teal btn-sm" style="margin-top:10px" onclick="saveBasePrices()">प्राइस सेव करें</button>
+      <div id="baseSaveMsg"></div>
+
+      <h3 style="font-size:14px;margin:22px 0 8px">मौजूदा सर्विस की फोटो URL डालें</h3>
+      <table class="admin-tbl">
+        <tr><th>सर्विस</th><th>फोटो URL</th></tr>
+        ${basePhotoRows()}
+      </table>
+      <button class="btn btn-teal btn-sm" style="margin-top:10px" onclick="saveBasePhotos()">फोटो सेव करें</button>
+      <div id="basePhotoMsg"></div>
+
+      <h3 style="font-size:14px;margin:22px 0 8px">नई कस्टम सर्विस जोड़ें</h3>
+      <label>सर्विस का नाम</label>
+      <input type="text" id="csName" placeholder="जैसे: कर्टन क्लीनिंग">
+      <label>यूनिट</label>
+      <input type="text" id="csUnit" placeholder="जैसे: पीस / sq.ft">
+      <label>प्राइस प्रति यूनिट (₹)</label>
+      <input type="number" id="csPrice" placeholder="जैसे: 200">
+      <label>अधिकतम मात्रा (max quantity)</label>
+      <input type="number" id="csMax" placeholder="जैसे: 10">
+      <label>फोटो URL (वैकल्पिक)</label>
+      <input type="text" id="csPhoto" placeholder="https://example.com/photo.jpg">
+      <div id="csErr"></div>
+      <button class="btn btn-primary btn-block" style="margin-top:12px" onclick="addCustomService()">सर्विस जोड़ें</button>
+
+      <h3 style="font-size:14px;margin:22px 0 8px">कस्टम सर्विस लिस्ट</h3>
+      <table class="admin-tbl">
+        <tr><th>नाम</th><th>यूनिट</th><th>प्राइस</th><th>मैक्स</th><th>फोटो</th><th></th></tr>
+        ${customServices.map(it=>`<tr><td>${it.name}</td><td>${it.unit}</td><td>₹${it.price}</td><td>${it.max}</td><td>${it.photo?'<span style="color:var(--teal-dark)">लगी हुई</span>':'-'}</td><td><button class="link-btn" onclick="deleteCustomService('${it.id}')">हटाएं</button></td></tr>`).join('') || '<tr><td colspan="6" style="color:var(--slate)">अभी कोई कस्टम सर्विस नहीं है</td></tr>'}
+      </table>
+      <p class="small-note">यहां जो भी सर्विस जोड़ेंगे, प्राइस बदलेंगे या फोटो लगाएंगे, वह तुरंत Customer App और वेबसाइट पर दिखेगा। फोटो URL किसी भी सीधे-सीधे इमेज लिंक (.jpg/.png/.webp) का इस्तेमाल करें।</p>
+
+      <h3 style="font-size:14px;margin:22px 0 8px">होम पेज पर "मदद चाहिए?" के लिए संपर्क जानकारी</h3>
+      <label>सपोर्ट फ़ोन नंबर</label>
+      <input type="text" id="supPhone" value="${SUPPORT_INFO.phone}" placeholder="जैसे: 9811100000">
+      <label>WhatsApp नंबर (देश कोड सहित, बिना + के)</label>
+      <input type="text" id="supWhatsapp" value="${SUPPORT_INFO.whatsapp}" placeholder="जैसे: 919811100000">
+      <label>सपोर्ट ईमेल</label>
+      <input type="email" id="supEmail" value="${SUPPORT_INFO.email}" placeholder="support@hscompany.in">
+      <button class="btn btn-teal btn-sm" style="margin-top:10px" onclick="saveSupportInfo()">सेव करें</button>
+      <div id="supSaveMsg"></div>
+    `;
+  }
+}
+function saveSupportInfo(){
+  SUPPORT_INFO.phone = document.getElementById('supPhone').value.trim();
+  SUPPORT_INFO.whatsapp = document.getElementById('supWhatsapp').value.trim();
+  SUPPORT_INFO.email = document.getElementById('supEmail').value.trim();
+  renderHelpCard();
+  document.getElementById('supSaveMsg').innerHTML = '<div class="ok-box">सपोर्ट जानकारी अपडेट हो गई</div>';
+}
+function basePhotoRows(){
+  return Object.keys(SERVICE_PHOTO_LABELS).map(k=>`<tr><td>${SERVICE_PHOTO_LABELS[k]}</td><td><input type="text" id="photo_${k}" value="${SERVICE_PHOTOS[k]||''}" placeholder="https://..." style="width:100%"></td></tr>`).join('');
+}
+function saveBasePhotos(){
+  Object.keys(SERVICE_PHOTO_LABELS).forEach(k=>{
+    const el = document.getElementById('photo_'+k);
+    SERVICE_PHOTOS[k] = el.value.trim();
+  });
+  renderHomeGrid();
+  document.getElementById('basePhotoMsg').innerHTML = '<div class="ok-box">फोटो अपडेट हो गईं</div>';
+}
+function basePriceRows(){
+  return Object.keys(PRICES).map(k=>`<tr><td>${PRICE_LABELS[k]}</td><td><input type="number" id="price_${k}" value="${PRICES[k]}" style="width:90px;padding:6px"></td></tr>`).join('');
+}
+function saveBasePrices(){
+  Object.keys(PRICES).forEach(k=>{
+    const el = document.getElementById('price_'+k);
+    const v = parseInt(el.value,10);
+    if(!isNaN(v) && v>=0) PRICES[k]=v;
+  });
+  document.getElementById('baseSaveMsg').innerHTML = '<div class="ok-box">प्राइस अपडेट हो गए</div>';
+}
+function addCustomService(){
+  const name = document.getElementById('csName').value.trim();
+  const unit = document.getElementById('csUnit').value.trim();
+  const price = parseInt(document.getElementById('csPrice').value,10);
+  const max = parseInt(document.getElementById('csMax').value,10);
+  const photo = document.getElementById('csPhoto').value.trim();
+  const err = document.getElementById('csErr');
+  if(!name||!unit||isNaN(price)||isNaN(max)||price<0||max<1){
+    err.innerHTML = '<div class="error-box">कृपया सभी फ़ील्ड सही भरें</div>'; return;
+  }
+  customServices.push({id:'C'+Date.now(), name, unit, price, max, photo});
+  renderHomeGrid();
+  adminTab('customise');
+}
+function deleteCustomService(id){
+  customServices = customServices.filter(it=>it.id!==id);
+  renderHomeGrid();
+  adminTab('customise');
+}
+function assignPartner(bid){
+  const sel = document.getElementById('assign_'+bid);
+  const pid = sel.value;
+  if(!pid){ alert('कृपया पार्टनर चुनें'); return; }
+  const b = bookings.find(x=>x.id===bid);
+  b.partnerId = pid; b.status='assigned';
+  adminTab('bookings');
+}
+function addPartner(){
+  const name = document.getElementById('npName').value.trim();
+  const mobile = document.getElementById('npMobile').value.trim();
+  const aadhar = document.getElementById('npAadhar').value.trim();
+  const pan = document.getElementById('npPan').value.trim();
+  const email = document.getElementById('npEmail').value.trim();
+  const err = document.getElementById('npErr');
+  if(!name||!mobile||!aadhar||!pan||!email){ err.innerHTML='<div class="error-box">कृपया सभी फ़ील्ड भरें</div>'; return; }
+  if(!/^\d{10}$/.test(mobile)){ err.innerHTML='<div class="error-box">सही मोबाइल नंबर डालें</div>'; return; }
+  if(partners.find(pt=>pt.mobile===mobile)){ err.innerHTML='<div class="error-box">यह नंबर पहले से पार्टनर के रूप में जुड़ा है</div>'; return; }
+  partners.push({id:'P'+(partners.length+1), mobile, aadhar, pan, email, name});
+  adminTab('partners');
+}
+</script>
+</body>
+</html>
